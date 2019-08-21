@@ -37,11 +37,6 @@ module Api
 
 				shippable = @order.status == 'pending' && @products.count.positive?
 
-				puts @products
-				puts shippable
-				puts @order.status
-				puts @products.count
-
 				if shippable
 					@order.update(status: 'shipped')
 					render json: @order, status: :ok, location: api_v1_order_url(@order)
